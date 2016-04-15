@@ -1,0 +1,84 @@
+@each $font-face in 'Bebas-neue','socialico'{
+	@font-face{
+		@font-family: $font-face;
+		 font-style: normal;
+		 font-weight: normal;
+		 src:url("../font/#{$font-face}.eot");
+		 src:url("../font/#{$font-face}.otf"), url("../font/#{$font-face}.ttf");
+	}
+}
+
+@mixin efectoEncabezado($degrees,$color: 'gray'){
+	content:"";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		height: 100%;
+		width: 50%;
+		background: unquote($color);
+		-webkit-transform:skew(0deg,unquote($degrees+"deg"));
+		-moz-transform:skew(0deg,unquote($degrees+"deg"));
+		-ms-transform:skew(0deg,unquote($degrees+"deg"));
+		transform:skew(0deg,unquote($degrees+"deg"));
+}
+
+
+
+html, body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	max-width: 100%; 
+}
+
+header{
+	position: fixed;
+	width: 100%;
+	height: 150px;
+	margin-top: -3em;
+	top:-4em;
+	text-align: center;
+	transition: all 1s;
+	&:hover{
+		top: 1.1em;
+	}
+	
+	&:before{
+		@include efectoEncabezado(5);
+		left: 0;
+	}
+	&:after{
+		 @include efectoEncabezado(-5);
+		right: 0;
+	}
+	nav ul{
+		margin: 4em;
+		margin-top: -3em;
+		margin-left: -1.5em;
+		font-weight: bold;
+		li{
+			display: inline-block;
+			padding-right:10px;
+		}
+	}
+}
+
+#logo{
+	background-color: gray;
+	position: relative;
+	width: 10%;
+	height: 100px;
+	text-align: center;
+	min-width: 100px;
+	max-width: 100%;
+	left: 43%;
+	top:120px;
+	z-index: 5;
+	border-radius: 60px 15px;
+	img{
+		margin-top: -20px;
+		width: 100px;
+	}
+}
+
+
